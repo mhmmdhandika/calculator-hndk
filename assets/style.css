@@ -3,14 +3,21 @@
 }
 
 body {
-    background-color: rgb(0, 195, 255);
+    background: hsla(182, 43%, 76%, 1);
+
+    background: linear-gradient(90deg, hsla(182, 43%, 76%, 1) 0%, hsla(203, 60%, 53%, 1) 100%);
+
+    background: -moz-linear-gradient(90deg, hsla(182, 43%, 76%, 1) 0%, hsla(203, 60%, 53%, 1) 100%);
+
+    background: -webkit-linear-gradient(90deg, hsla(182, 43%, 76%, 1) 0%, hsla(203, 60%, 53%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#A8DADC", endColorstr="#4098CF", GradientType=1);
 }
 
-.container {
+.container-sm {
     width: 400px;
     height: fit-content;
-    background-color: #343A40;
-    border: white solid 2px;
+    border: #1d3557 solid 2px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -18,8 +25,8 @@ body {
 }
 
 #d-value {
-    padding: 30px;
-    border: white solid 1px;
+    padding: 30px 43px;
+    border: #1d3557 solid 1px;
     font-size: 30px;
 }
 
@@ -29,15 +36,26 @@ body {
 }
 
 .btn-cltr {
-    border: white solid 1px;
-    background-color: #56e6ff;
+    border: #1d3557 solid 1px;
+    background-color: #457b9d;
 }
 
 .number {
-    background-color: #7952B3;
+    background-color: #a8dadc;
     color: #161e54;
 }
 
 #equal {
-    background-color: #ff5151;
+    background-color: #e63946;
+}
+
+.operator {
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+    .container-sm {
+        width: 80%;
+    }
 }
