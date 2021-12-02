@@ -1,31 +1,48 @@
-// inisialisasi bil1, bil2, oprs, hasil
+// masukkan input ke variabel firstvalue atau ke secondvalue
 
-// input nilai a
-const nilaiA = parseInt(prompt('Masukkan nilai A!'))
-
-// Pilih salah satu operasi dari (+), (-), (x), (:)
-
-const pilihOperasi = prompt('Masukkan salah satu operasi dari (+), (-), (x), (:)')
-
-// input nilai b
-const nilaiB = parseInt(prompt('Masukkan nilai B!'))
-
-// jika memilih operasi (+) = a + b
-// jika memilih operasi (-) = a - b
-// jika memilih operasi (x) = a * b
-// jika memilih operasi (:) = a / b
+// inisialisasi kondisi awal
+let display = document.getElementById('displayNumber')
+let firstValue
+let secondValue
 let hasil
-if (pilihOperasi === '+') {
-    hasil = nilaiA + nilaiB
-} else if (pilihOperasi === '-') {
-    hasil = nilaiA - nilaiB
-} else if (pilihOperasi === 'x') {
-    hasil = nilaiA * nilaiB
-} else if (pilihOperasi === ':') {
-    hasil = nilaiA / nilaiB
-} else {
-    hasil = 'Kamu memasukkan input yang salah!'
-}
 
-// tampilkan hasilnya
-console.log(hasil)
+// lakukan input
+document.querySelector('#calculator').addEventListener('click', function (e) {
+    if (e.target.classList.contains('number')) {
+        switch (firstValue, secondValue) {
+            case undefined:
+                if (display.textContent === '0') {
+                    display.innerText = e.target.innerText
+                } else {
+                    display.innerText += e.target.innerText
+                }
+                break
+        }
+    } else if (e.target.classList.contains('operator')) {
+        switch (e.target.innerText) {
+
+            case 'CE':
+                firstValue = undefined
+                secondValue = undefined
+                display.innerText = 0
+                break
+            case '+':
+                if (secondValue === undefined) {
+                    hasil = firstValue
+                    display.innerText += '+'
+                } else {
+                    hasil = firstValue + secondValue
+                    display.innerText = hasil
+                }
+                break
+            case '-':
+                break
+            case 'x':
+                break
+            case ':':
+                break
+        }
+    }
+})
+
+// tampilkan hasil
