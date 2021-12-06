@@ -1,60 +1,48 @@
-// Inisialisasi tombol dan layar kalkulator
-let calculator = document.getElementById('calculator')
+// masukkan input ke variabel firstvalue atau ke secondvalue
+
+// inisialisasi kondisi awal
 let display = document.getElementById('displayNumber')
+let firstValue
+let secondValue
+let hasil
 
-// digunakan untuk menyeleksi jika operator sudah ada di akhir string, maka operator tidak ditampilkan dan harus memasukkan input nilai
-let excptDouble
-
-// user memasukkan nilai dan operator
-calculator.addEventListener('click', function (e) {
+// lakukan input
+document.querySelector('#calculator').addEventListener('click', function (e) {
     if (e.target.classList.contains('number')) {
-        switch (display.innerText) {
-            case '0':
-                display.innerText = e.target.innerText
-                break
-            default:
-                display.innerText += e.target.innerText
+        switch (firstValue, secondValue) {
+            case undefined:
+                if (display.textContent === '0') {
+                    display.innerText = e.target.innerText
+                } else {
+                    display.innerText += e.target.innerText
+                }
                 break
         }
     } else if (e.target.classList.contains('operator')) {
-        excptDouble = display.innerText.slice(display.innerText.length - 1)
-
-        function checkForOperator() {
-            if (e.target.innerText === 'x') {
-                display.innerText += '*'
-            } else if (e.target.innerText === ':') {
-                display.innerText += '/'
-            } else if (excptDouble === '+' || excptDouble === '-' || excptDouble === 'x' || excptDouble === ':' || display.innerText === '0') {
-                display.innerText
-            } else {
-                display.innerText += e.target.innerText
-            }
-        }
         switch (e.target.innerText) {
-            case ('+'):
-            case ('-'):
-            case ('x'):
-            case ('/'):
-                checkForOperator()
+
+            case 'CE':
+                firstValue = undefined
+                secondValue = undefined
+                display.innerText = 0
                 break
-            case ('CE'):
-                const ce = display.innerText.substring(0, display.innerText.length - 1)
-                if (display.innerText.length === 1) {
-                    display.innerText = 0
+            case '+':
+                if (secondValue === undefined) {
+                    hasil = firstValue
+                    display.innerText += '+'
                 } else {
-                    display.innerText = ce
+                    hasil = firstValue + secondValue
+                    display.innerText = hasil
                 }
                 break
-            case ('='):
-                // menampilkan hasil
-                const result = eval(display.innerText)
-                display.innerText = result
+            case '-':
+                break
+            case 'x':
+                break
+            case ':':
                 break
         }
     }
-    // update tampilan kalkulator ke variabel pengecekan
-    excptDouble = display.innerText
 })
 
-// eksekusi nilai a dan b
-// tampilkan hasilnya
+// tampilkan hasil
