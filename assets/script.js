@@ -1,48 +1,60 @@
-// masukkan input ke variabel firstvalue atau ke secondvalue
-
-// inisialisasi kondisi awal
+// Inisialisasi tombol dan layar kalkulator
+let calculator = document.getElementById('calculator')
 let display = document.getElementById('displayNumber')
-let firstValue
-let secondValue
-let hasil
 
-// lakukan input
-document.querySelector('#calculator').addEventListener('click', function (e) {
+// digunakan untuk menyeleksi jika operator sudah ada di akhir string, maka operator tidak ditampilkan dan harus memasukkan input nilai
+let excptDouble
+
+// user memasukkan nilai dan operator
+calculator.addEventListener('click', function (e) {
     if (e.target.classList.contains('number')) {
-        switch (firstValue, secondValue) {
-            case undefined:
-                if (display.textContent === '0') {
-                    display.innerText = e.target.innerText
-                } else {
-                    display.innerText += e.target.innerText
-                }
+        switch (display.innerText) {
+            case '0':
+                display.innerText = e.target.innerText
+                break
+            default:
+                display.innerText += e.target.innerText
                 break
         }
     } else if (e.target.classList.contains('operator')) {
-        switch (e.target.innerText) {
+        excptDouble = display.innerText.slice(display.innerText.length - 1)
 
-            case 'CE':
-                firstValue = undefined
-                secondValue = undefined
-                display.innerText = 0
+        function checkForOperator() {
+            if (e.target.innerText === 'x') {
+                display.innerText += '*'
+            } else if (e.target.innerText === ':') {
+                display.innerText += '/'
+            } else if (excptDouble === '+' || excptDouble === '-' || excptDouble === 'x' || excptDouble === ':' || display.innerText === '0') {
+                display.innerText
+            } else {
+                display.innerText += e.target.innerText
+            }
+        }
+        switch (e.target.innerText) {
+            case ('+'):
+            case ('-'):
+            case ('x'):
+            case ('/'):
+                checkForOperator()
                 break
-            case '+':
-                if (secondValue === undefined) {
-                    hasil = firstValue
-                    display.innerText += '+'
+            case ('CE'):
+                const ce = display.innerText.substring(0, display.innerText.length - 1)
+                if (display.innerText.length === 1) {
+                    display.innerText = 0
                 } else {
-                    hasil = firstValue + secondValue
-                    display.innerText = hasil
+                    display.innerText = ce
                 }
                 break
-            case '-':
-                break
-            case 'x':
-                break
-            case ':':
+            case ('='):
+                // menampilkan hasil
+                const result = eval(display.innerText)
+                display.innerText = result
                 break
         }
     }
+    // update tampilan kalkulator ke variabel pengecekan
+    excptDouble = display.innerText
 })
 
-// tampilkan hasil
+// eksekusi nilai a dan b
+// tampilkan hasilnya
