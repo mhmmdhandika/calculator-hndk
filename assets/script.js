@@ -18,7 +18,7 @@ calculator.addEventListener('click', function (e) {
         }
     } else if (e.target.classList.contains('operator')) {
         excptDouble = display.innerText.slice(display.innerText.length - 1)
-
+        // mengecek apakah diakhir baris string sudah ada operatornya
         function checkForOperator() {
             if (excptDouble === '+' || excptDouble === '-' || excptDouble === 'x' || excptDouble === '/' || display.innerText === '0') {
                 display.innerText
@@ -53,6 +53,3 @@ calculator.addEventListener('click', function (e) {
     // update tampilan kalkulator ke variabel pengecekan
     excptDouble = display.innerText
 })
-
-// eksekusi nilai a dan b
-// tampilkan hasilnya
