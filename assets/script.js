@@ -20,8 +20,10 @@ calculator.addEventListener('click', function (e) {
         excptDouble = display.innerText.slice(display.innerText.length - 1)
 
         function checkForOperator() {
-            if (excptDouble === '+' || excptDouble === '-' || excptDouble === '*' || excptDouble === '/' || display.innerText === '0') {
+            if (excptDouble === '+' || excptDouble === '-' || excptDouble === 'x' || excptDouble === '/' || display.innerText === '0') {
                 display.innerText
+            } else if (e.target.innerText === 'x') {
+                display.innerText += "*"
             } else {
                 display.innerText += e.target.innerText
             }
@@ -29,7 +31,7 @@ calculator.addEventListener('click', function (e) {
         switch (e.target.innerText) {
             case ('+'):
             case ('-'):
-            case ('*'):
+            case ('x'):
             case ('/'):
                 checkForOperator()
                 break
