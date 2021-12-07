@@ -54,3 +54,9 @@ body {
     color: white;
     font-weight: bold;
 }
+
+@media (max-width: 576px) {
+    .container-sm {
+        width: 85%;
+    }
+}
