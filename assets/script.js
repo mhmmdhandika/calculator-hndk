@@ -2,7 +2,7 @@
 let calculator = document.getElementById('calculator')
 let display = document.getElementById('displayNumber')
 
-// digunakan untuk menyeleksi jika operator sudah ada di akhir string, maka operator tidak ditampilkan dan harus memasukkan input nilai
+// digunakan untuk menyeleksi jika operator sudah ada di akhir string, maka operator tidak ditampilkan harus memasukkan input nilai
 let excptDouble
 
 // user memasukkan nilai dan operator
