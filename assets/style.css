@@ -2,61 +2,95 @@
     box-sizing: border-box;
 }
 
-body {
-    background: -webkit-linear-gradient(left, #6fe7ff, #318cd6);
-}
+/* body {
+    background-color: firebrick;
+} */
 
-.container-sm {
-    width: 400px;
-    height: fit-content;
+.container-md {
     border: #1d3557 solid 2px;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-#displayNumber {
-    padding: 30px 43px;
-    border: #1d3557 solid 1px;
-    font-size: 30px;
+    width: 30rem;
     background-color: white;
 }
 
+.first-row {
+    height: 35%;
+    font-size: 4rem;
+}
+
+.second-row,
+.third-row,
+.fourth-row,
+.fifth-row,
+.sixth-row {
+    height: 13%;
+}
+
 .col {
-    padding: 20px;
-    color: #161e54;
+    border: #1d3557 solid 0.0555rem;
+    font-size: 1.3rem;
 }
 
-.btn-cltr {
-    border: #1d3557 solid 1px;
-    background-color: #457b9d;
+#display-number {
+    font-size: 3.5rem;
+    background-color: white;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 5% 10% 5% 10%;
 }
 
-.btn-cltr:hover {
-    font-weight: bold;
+.number-button,
+.operator-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
 }
 
-.btn-cltr:active {
-    opacity: 0.8;
-}
-
-.number {
+.number-button {
     background-color: #a8dadc;
-    color: #161e54;
 }
 
-#equal {
-    background-color: #e63946;
-}
-
-.operator {
+.operator-button {
+    background-color: #457b9d;
     color: white;
     font-weight: bold;
 }
 
-@media (max-width: 576px) {
-    .container-sm {
-        width: 85%;
+#equal-button {
+    background-color: #e63946;
+}
+
+.number-button:active,
+.operator-button:active {
+    opacity: 0.9;
+}
+
+.number-button:hover {
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .container-md {
+        height: 100%;
+        width: 100%;
+    }
+
+    .col {
+        font-size: 1.5rem;
+        border: #1d3557 solid 0.1111rem;
+    }
+
+    #display-number {
+        font-size: 5rem;
+    }
+
+    .number-button,
+    .operator-button {
+        height: 100%;
     }
 }
