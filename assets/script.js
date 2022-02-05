@@ -1,55 +1,57 @@
-// // Inisialisasi tombol dan layar kalkulator
-// let calculator = document.getElementById('calculator')
-// let display = document.getElementById('displayNumber')
+// algoritma kalkulator
 
-// // digunakan untuk menyeleksi jika operator sudah ada di akhir string, maka operator tidak ditampilkan harus memasukkan input nilai
-// let excptDouble
+// deklarasi
+// const displayNumber 
+// const calculator = operatorButton & numberButton
 
-// // user memasukkan nilai dan operator
-// calculator.addEventListener('click', function (e) {
-//     if (e.target.classList.contains('number')) {
-//         switch (display.innerText) {
-//             case '0':
-//                 display.innerText = e.target.innerText
-//                 break
-//             default:
-//                 display.innerText += e.target.innerText
-//                 break
-//         }
-//     } else if (e.target.classList.contains('operator')) {
-//         excptDouble = display.innerText.slice(display.innerText.length - 1)
-//         // mengecek apakah diakhir baris string sudah ada operatornya
-//         function checkForOperator() {
-//             if (excptDouble === '+' || excptDouble === '-' || excptDouble === 'x' || excptDouble === '/' || display.innerText === '0') {
-//                 display.innerText
-//             } else if (e.target.innerText === 'x') {
-//                 display.innerText += "*"
-//             } else {
-//                 display.innerText += e.target.innerText
-//             }
-//         }
-//         switch (e.target.innerText) {
-//             case ('+'):
-//             case ('-'):
-//             case ('x'):
-//             case ('/'):
-//                 checkForOperator()
-//                 break
-//             case ('CE'):
-//                 const ce = display.innerText.substring(0, display.innerText.length - 1)
-//                 if (display.innerText.length === 1) {
-//                     display.innerText = 0
-//                 } else {
-//                     display.innerText = ce
-//                 }
-//                 break
-//             case ('='):
-//                 // menampilkan hasil
-//                 const result = eval(display.innerText)
-//                 display.innerText = result
-//                 break
-//         }
-//     }
-//     // update tampilan kalkulator ke variabel pengecekan
-//     excptDouble = display.innerText
-// })
+// proses
+// jika user menekan tombol yang berisi number
+// cek apakah displayNumber == 0 ?
+// ya, maka ubah displayNumber = numberButton
+// tidak, maka tambahkan displayNumber += numberButton
+
+// jika user menekan tombol yang berisi operator
+// cek apakah displayNumber == operatorButton ?
+// ya, maka displayNumber tidak berubah
+// tidak, maka lakukan operasi dari displayNumber
+
+// declaration
+const displayNumber = document.getElementById('display-number')
+const calculator = document.getElementById('calculator')
+let exceptDoubleOperator = displayNumber.innerText.slice(displayNumber.innerText.length - 1)
+// variabel exceptDoubleOperator digunakan untuk menyeleksi apakah operator sudah ada di akhir string
+
+// progress
+calculator.addEventListener('click', function (event) {
+    if (event.target.classList.contains('number-button')) {
+        switch (displayNumber.innerText) {
+            case '0':
+                displayNumber.innerText = event.target.innerText
+                break
+            default:
+                displayNumber.innerText += event.target.innerText
+                displayNumber.classList.add('text-wrap')
+                break
+        }
+    } else if (event.target.classList.contains('operator-button')) {
+        switch (event.target.innerText) {
+            case ('+'):
+            case ('-'):
+            case ('x'):
+            case ('/'):
+                // switch (exceptDoubleOperator) {
+                //     case ('+'):
+                //     case ('-'):
+                //     case ('x'):
+                //     case ('/'):
+                //         displayNumber.innerText
+                //         break
+                //     case (event.target.innerText == 'x'):
+                //         displayNumber.innerText += '*'
+                //         break
+                //     default:
+                //         displayNumber.innerText += event.target.innerText
+                // }
+        }
+    }
+})
