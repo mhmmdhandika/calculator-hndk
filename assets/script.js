@@ -47,7 +47,7 @@ calculator.addEventListener('click', function (event) {
             case ('AC'):
                 displayNumber.innerText = 0
             case ('='):
-                const result = displayNumber.innerText.replace('x', '*').replace('%', '/100')
+                const result = displayNumber.innerText.replaceAll('x', '*').replaceAll('%', '/100').replaceAll(',', '')
                 // variabel result ini juga digunakan untuk menyeleksi operator x dan %, lalu di konversi pada masing-masing returnnya tersebut.
                 console.log(result)
                 let internationalNumberFormat = new Intl.NumberFormat('en-US')
