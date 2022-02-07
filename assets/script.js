@@ -1,27 +1,10 @@
-// algoritma kalkulator
-
-// deklarasi
-// const displayNumber 
-// const calculator = operatorButton & numberButton
-
-// proses
-// jika user menekan tombol yang berisi number
-// cek apakah displayNumber == 0 ?
-// ya, maka ubah displayNumber = numberButton
-// tidak, maka tambahkan displayNumber += numberButton
-
-// jika user menekan tombol yang berisi operator
-// cek apakah displayNumber == operatorButton ?
-// ya, maka displayNumber tidak berubah
-// tidak, maka lakukan operasi dari displayNumber
-
 // declaration
-const displayNumber = document.getElementById('display-number')
 const calculator = document.getElementById('calculator')
-let exceptDoubleOperator = displayNumber.innerText.slice(displayNumber.innerText.length - 1)
+let displayNumber = document.getElementById('display-number')
+let exceptDoubleOperator
 // variabel exceptDoubleOperator digunakan untuk menyeleksi apakah operator sudah ada di akhir string
 
-// progress
+// user menekan antara tombol nomor atau operator
 calculator.addEventListener('click', function (event) {
     if (event.target.classList.contains('number-button')) {
         switch (displayNumber.innerText) {
@@ -30,28 +13,48 @@ calculator.addEventListener('click', function (event) {
                 break
             default:
                 displayNumber.innerText += event.target.innerText
-                displayNumber.classList.add('text-wrap')
                 break
         }
     } else if (event.target.classList.contains('operator-button')) {
+        exceptDoubleOperator = displayNumber.innerText.slice(displayNumber.innerText.length - 1)
         switch (event.target.innerText) {
             case ('+'):
             case ('-'):
             case ('x'):
+            case ('%'):
             case ('/'):
-                // switch (exceptDoubleOperator) {
-                //     case ('+'):
-                //     case ('-'):
-                //     case ('x'):
-                //     case ('/'):
-                //         displayNumber.innerText
-                //         break
-                //     case (event.target.innerText == 'x'):
-                //         displayNumber.innerText += '*'
-                //         break
-                //     default:
-                //         displayNumber.innerText += event.target.innerText
-                // }
+            case ('.'):
+                switch (exceptDoubleOperator) {
+                    case ('+'):
+                    case ('-'):
+                    case ('x'):
+                    case ('/'):
+                    case ('/100'):
+                    case ('.'):
+                        displayNumber.innerText
+                        break
+                    default:
+                        displayNumber.innerText += event.target.innerText
+                }
+                break
+            case ('Del'):
+                if (displayNumber.innerText.length === 1) {
+                    displayNumber.innerText = 0
+                } else {
+                    displayNumber.innerText = displayNumber.innerText.substring(0, displayNumber.innerText.length - 1)
+                }
+                break
+            case ('AC'):
+                displayNumber.innerText = 0
+            case ('='):
+                const result = displayNumber.innerText.replace('x', '*').replace('%', '/100')
+                // variabel result ini juga digunakan untuk menyeleksi operator x dan %, lalu di konversi pada masing-masing returnnya tersebut.
+                console.log(result)
+                let internationalNumberFormat = new Intl.NumberFormat('en-US')
+                displayNumber.innerText = eval(result)
+                displayNumber.innerText = internationalNumberFormat.format(displayNumber.innerText)
         }
+        // update innerText calculator ke variabel pengecekan
+        exceptDoubleOperator = displayNumber.innerText
     }
 })
