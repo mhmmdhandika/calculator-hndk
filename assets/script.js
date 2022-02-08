@@ -1,10 +1,10 @@
 // declaration
 const calculator = document.getElementById('calculator')
 let displayNumber = document.getElementById('display-number')
+// exceptDoubleOperator variable is used for selecting operator is already at the end of the string or not.
 let exceptDoubleOperator
-// variabel exceptDoubleOperator digunakan untuk menyeleksi apakah operator sudah ada di akhir string
 
-// user menekan antara tombol nomor atau operator
+// user pressing the number buttons or operator buttons
 calculator.addEventListener('click', function (event) {
     if (event.target.classList.contains('number-button')) {
         switch (displayNumber.innerText) {
@@ -47,8 +47,8 @@ calculator.addEventListener('click', function (event) {
             case ('AC'):
                 displayNumber.innerText = 0
             case ('='):
+                // result variable is used for replace x => *, % => /100 and , (comma) => '' (empty string). This variable is also used at the time of execution of the calculation in the eval() function later.
                 const result = displayNumber.innerText.replaceAll('x', '*').replaceAll('%', '/100').replaceAll(',', '')
-                // variabel result ini juga digunakan untuk menyeleksi operator x dan %, lalu di konversi pada masing-masing returnnya tersebut.
                 console.log(result)
                 let internationalNumberFormat = new Intl.NumberFormat('en-US')
                 displayNumber.innerText = eval(result)

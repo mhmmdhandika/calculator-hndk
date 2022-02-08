@@ -2,10 +2,6 @@
     box-sizing: border-box;
 }
 
-/* body {
-    background-color: firebrick;
-} */
-
 .container-sm {
     border: #1d3557 solid 2px;
     position: fixed;
